@@ -157,7 +157,10 @@ class KnowledgeGraphToolKits:
         # print("prompt = ", prompt)
         messages = [{"content": prompt, "role": "user"}]
         response = self.client.create(messages=messages)
-        extracted_response = self.client.extract_text_or_completion_object(response)[0]
+        if self.llm_config['config_list'][0]['api_type'] == 'bedrock': # Hardfix for Bedrock completion object
+            extracted_response = response.choices[0].message.content;
+        else:
+            extracted_response = self.client.extract_text_or_completion_object(response)[0]
         if extracted_response is None:
             print("Object is none. Prompt is ", prompt)
         else:
