@@ -48,7 +48,9 @@ class VerilogCoder:
 
         # Toolkit initialization
         self.kg_plan_tool = KnowledgeGraphToolKits(
-            llm_config={"config_list": kg_llm_config, "cache_seed": None, "temperature": 0.0, "top_p": 1})
+            llm_config={"config_list": kg_llm_config, "cache_seed": None, "temperature": 0.0, "top_p": 1},
+            workdir="./work/tmp"
+        )
         self.verilog_tools = VerilogToolKits(workdir=os.getcwd() + "/" + verilog_tmp_dir)
 
         # dirs

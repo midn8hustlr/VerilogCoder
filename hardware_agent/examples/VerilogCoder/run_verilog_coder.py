@@ -19,16 +19,16 @@ hardware_agent/examples/VerilogCoder/verilog-eval-v2/plans/ --generate_verilog_d
 parser = argparse.ArgumentParser(description='VerilogCoder: Autonomous Autonomous Verilog Coding Agents with Graph-based '
                                              'Planning and Abstract Syntax Tree (AST)-based Waveform Tracing Tool',
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument('--generate_plan_dir', help="Plan directory for generated plans", default="./generated_verilog_plans/")
+parser.add_argument('--generate_plan_dir', help="Plan directory for generated plans", default="./work/generated_verilog_plans/")
 parser.add_argument('--generate_verilog_dir', help="Verilog directory for generated functional correct Verilog module",
-                    default="./generate_verilog_dir/")
-parser.add_argument('--verilog_tmp_dir', help="Temp directory for agent", default="./verilog_tool_tmp/")
-parser.add_argument('--verilog_example_dir', help="Verilog question set dir", default="./verilog_eval_v2/")
+                    default="./work/generate_verilog_dir/")
+parser.add_argument('--verilog_tmp_dir', help="Temp directory for agent", default="./work/verilog_tool_tmp/")
+parser.add_argument('--verilog_example_dir', help="Verilog question set dir", default="./work/verilog_eval_v2/")
 args = parser.parse_args()
 print(args)
 
 # create the tmp directory for plan graph
-tmp_dir = "./tmp/"
+tmp_dir = "./work/tmp/"
 if not os.path.exists(tmp_dir):
     os.makedirs(tmp_dir)
     print(f"Created directory: {tmp_dir}")
