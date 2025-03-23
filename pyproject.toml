@@ -1,0 +1,23 @@
+[project]
+name = "verilogcoder"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "autogen>=0.8.3",
+    "chromadb>=0.6.3",
+    "flaml>=2.3.4",
+    "ipython>=9.0.2",
+    "langchain>=0.3.21",
+    "langchain-community>=0.3.20",
+    "markdownify>=1.1.0",
+    "matplotlib>=3.10.1",
+    "networkx>=3.4.2",
+    "openai>=1.68.2",
+    "pandas>=2.2.3",
+    "pillow>=11.1.0",
+    "ply>=3.11",
+    "pypdf>=5.4.0",
+    "vcdvcd>=2.3.6",
+]
