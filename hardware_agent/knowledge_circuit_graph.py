@@ -6,10 +6,9 @@
 
 import os
 from copy import deepcopy
-from langchain import PromptTemplate
 from tqdm import tqdm
 from typing import List, Dict, Any, Optional
-from langchain.pydantic_v1 import Field, BaseModel
+from pydantic import Field, BaseModel
 import os
 from langchain.chains.openai_functions import (
     create_openai_fn_chain,
@@ -23,7 +22,6 @@ from langchain_community.graphs.graph_document import (
 
 # from langchain_openai import ChatOpenAI
 from pydantic import Field, BaseModel
-from langchain.prompts import ChatPromptTemplate
 # Query the knowledge graph in a RAG application
 from typing import Any, Callable, Dict, List, Literal, Optional, Tuple, Type, TypeVar, Union, Annotated
 from autogen import config_list_from_json
@@ -157,8 +155,9 @@ class KnowledgeGraphToolKits:
         # print("prompt = ", prompt)
         messages = [{"content": prompt, "role": "user"}]
         response = self.client.create(messages=messages)
-        if self.llm_config['config_list'][0]['api_type'] == 'bedrock': # Hardfix for Bedrock completion object
-            extracted_response = response.choices[0].message.content;
+        api_type = self.llm_config['config_list'][0]['api_type'] if 'api_type' in self.llm_config['config_list'][0] else "openai";
+        if api_type == "bedrock": # Hardfix for Bedrock completion object
+            extracted_response = response.choices[0].message.content
         else:
             extracted_response = self.client.extract_text_or_completion_object(response)[0]
         if extracted_response is None:
