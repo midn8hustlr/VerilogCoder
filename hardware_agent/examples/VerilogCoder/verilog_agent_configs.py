@@ -114,12 +114,12 @@ def get_verilog_completion_agent_config(config_list: Dict[str, Any], opensource_
                                    "TERMINATE"),
                                'max_consecutive_auto_reply': 20,
                                # the default system message of the AssistantAgent is overwritten here
-                               'system_message': "You are a verilog verification assistance. You verify the subtasks and written verilog code from verilog_engineer."
-                                                 " Identify the mismatches of the module description, sub task and written verilog code. Suggest "
+                               'system_message': "You are a verilog verification assistance. You verify the subtasks and written verilog code from verilog_engineer. "
+                                                 "Identify the mismatches of the module description, sub task and written verilog code. Suggest "
                                                  "verilog_engineer a plan to modify code with bulletins. You can not suggest modification of the Module input and output ports. "
-                                                 "If The provided Verilog code correctly implements the subtask requirement, "
-                                                 "you need to always return the correct verilog code with ```verilog and ``` bracket "
-                                                 "firstly and Reply TERMINATE outside the ```verilog and ``` bracket. Don't only reply TERMINATE.",
+                                                 "If the provided Verilog code correctly implements the subtask requirement, you have to terminate the chat."
+                                                 "To terminate the chat, first you have to return the correct verilog code inside ```verilog and ``` code block, "
+                                                 "and then reply TERMINATE outside the code block.",
                                }
          }
     ]
