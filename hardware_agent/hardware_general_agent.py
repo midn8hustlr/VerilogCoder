@@ -13,9 +13,9 @@ from typing import Any, Callable, Dict, List, Literal, Optional, Tuple, Type, Ty
 from autogen.agentchat.contrib.capabilities import transform_messages, transforms
 from autogen.agentchat.contrib.retrieve_assistant_agent import RetrieveAssistantAgent
 from autogen.agentchat.contrib.retrieve_user_proxy_agent import RetrieveUserProxyAgent
-from autogen.agentchat.contrib.phi_image_agent import PhiVConversableAgent
-from autogen.agentchat.os_conversable_agent import OS_ConversableAgent
-from autogen.agentchat.os_assistant_agent import OS_AssistantAgent
+#from autogen.agentchat.contrib.phi_image_agent import PhiVConversableAgent
+#from autogen.agentchat.conversable_agent import ConversableAgent
+#from autogen.agentchat.assistant_agent import AssistantAgent
 
 # Normally user don't need to change the termination msg
 def termination_msg(x):
@@ -92,11 +92,11 @@ class HardwareAgent:
                       'ConversableAgent': ConversableAgent,
                       'RetrieveUserProxyAgent': RetrieveUserProxyAgent,
                       'RetrieveAssistantAgent': RetrieveAssistantAgent,
-                      'PhiVConversableAgent': PhiVConversableAgent, # Added image LLM support
-                      'OS_AssistantAgent': OS_AssistantAgent,
-                      'OS_ConversableAgent': OS_ConversableAgent
+                      #'PhiVConversableAgent': PhiVConversableAgent, # Added image LLM support
+                      'OS_AssistantAgent': AssistantAgent,
+                      'OS_ConversableAgent': ConversableAgent
                       }
-    TRANSFORMMESSAGELIST = { 'LLMSummary': transform_messages.LLMTransformMessages,
+    TRANSFORMMESSAGELIST = { 'LLMSummary': transform_messages.TransformMessages,
                              'HistoryLimit': transforms.MessageHistoryLimiter,
                              'TokenLimit': transforms.MessageTokenLimiter
                            }
@@ -244,11 +244,12 @@ class HardwareAgent:
 
     # revalidate the llm for gateway chat
     def revalidate_llm_config(self):
-        for agent_name in self.agents:
-            if type(self.agents[agent_name]) == UserProxyAgent or \
-                    type(self.agents[agent_name]) == RetrieveUserProxyAgent:
-                continue
-            self.agents[agent_name].revalidate_llm_config()
+        pass
+        #for agent_name in self.agents:
+        #    if type(self.agents[agent_name]) == UserProxyAgent or \
+        #            type(self.agents[agent_name]) == RetrieveUserProxyAgent:
+        #        continue
+        #    self.agents[agent_name].revalidate_llm_config()
 
     # Mark: start the chat to proxy
     # Need to input the pure text question after using prompt formatting

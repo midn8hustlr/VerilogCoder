@@ -83,7 +83,7 @@ class TaskPlanAgent:
              'tools': ['sequential_flipflop_latch_identify_tool'],
              'base_agent_config': {'name': 'planner',
                                    'llm_config': {"config_list": config_list, "cache_seed": None, "temperature": 0.1,
-                                                  "top_p": 1},
+                                                  },#"top_p": 1},
                                    'description': "Planner assistant to break down the task into subtasks for completing the verilog code.",
                                    'is_termination_msg': lambda x: x.get("content", "") and x.get("content",
                                                                                                   "").rstrip().endswith(
@@ -104,7 +104,7 @@ class TaskPlanAgent:
             {'type': 'AssistantAgent',
              'base_agent_config': {'name': 'plan_verify_assistant',
                                    'llm_config': {"config_list": config_list, "cache_seed": None, "temperature": 0.1,
-                                                  "top_p": 1},
+                                                  },#"top_p": 1},
                                    'description': "Assistant who verify the subtasks and plan from planner match the user instruction.",
                                    'is_termination_msg': lambda x: x.get("content", "") and x.get("content",
                                                                                                   "").rstrip().endswith(
@@ -113,7 +113,7 @@ class TaskPlanAgent:
                                    # the default system message of the AssistantAgent is overwritten here
                                    'system_message': "You are a verilog RTL designer. You verify the subtasks and plan from planner.\nLet's think step by step."
                                                      " You need to identify the mismatches of the plan and user instruction, and any rule violations in [Rules] of the plan. Suggest "
-                                                     "planner modify the plan if needed. Always return the plan in json format. If the plan is good enough, Reply TERMINATE outside of ```json and ``` bracket in the response.",
+                                                     "planner modify the plan if needed. Always return the plan in json format. If the plan is good enough, Reply TERMINATE outside of ```json and ``` bracket in the response. DO NOT REPLY TERMINATE inside the ```json and ``` bracket.",
                                    }
              }
         ]
@@ -149,7 +149,7 @@ class TaskPlanAgent:
             {'type': 'AssistantAgent',
              'base_agent_config': {'name': 'verilog_engineer',
                                    'llm_config': {"config_list": config_list, "cache_seed": None, "temperature": 0,
-                                                  "top_p": 1},
+                                                  },#"top_p": 1},
                                    'description': "verilog engineer extract the signal and signal transition into the json format.",
                                    'is_termination_msg': lambda x: x.get("content", "") and x.get("content",
                                                                                                   "").rstrip().endswith(
