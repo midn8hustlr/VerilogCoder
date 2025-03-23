@@ -1,0 +1,14 @@
+[
+    {
+        "api_type": "bedrock",
+        "model": "anthropic.claude-3-5-sonnet-20241022-v2:0",
+        "aws_region": "us-west-2",
+        "aws_access_key": "",
+        "aws_secret_key": "",
+        "price": [0.003, 0.015]
+    },
+    {
+        "model": "gpt-4o",
+        "api_key": ""
+    }
+]

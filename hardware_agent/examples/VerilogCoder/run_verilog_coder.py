@@ -42,7 +42,7 @@ user_task_ids = {'zero'}
 case_manager = VerilogCaseManager(file_path=args.verilog_example_dir, task_ids=user_task_ids)
 
 # llm configurations
-gpt4_config_list = config_list_from_json(env_or_file="OAI_CONFIG_LIST")
+gpt4_config_list = config_list_from_json(env_or_file="LLM_CONFIG")
 
 # llama3 settings: Used for comparison
 llm_configs = {"task_planner_llm": gpt4_config_list,
