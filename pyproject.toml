@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "autogen>=0.8.3",
+    "boto3>=1.37.18",
     "chromadb>=0.6.3",
     "flaml>=2.3.4",
     "ipython>=9.0.2",
