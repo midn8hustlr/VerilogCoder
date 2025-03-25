@@ -42,7 +42,8 @@ def get_plan_graph_retrieval_agent_config(config_list: Dict[str, Any], opensourc
                                'max_consecutive_auto_reply': 20,
                                # the default system message of the AssistantAgent is overwritten here
                                'system_message': "You are a verilog RTL designer. You retrieve the required information for current plan in the knowledge graph."
-                                                 "When you think the required information of the current plan is enough, Reply TERMINATE in the response.",
+                                                 "When you think the required information of the current plan is enough, Reply TERMINATE in the response. "
+                                                 "Always reply TERMINATE at the end only.",
                                }
          }
     ]
@@ -119,7 +120,8 @@ def get_verilog_completion_agent_config(config_list: Dict[str, Any], opensource_
                                                  "verilog_engineer a plan to modify code with bulletins. You can not suggest modification of the Module input and output ports. "
                                                  "If the provided Verilog code correctly implements the subtask requirement, you have to terminate the chat."
                                                  "To terminate the chat, first you have to return the correct verilog code inside ```verilog and ``` code block, "
-                                                 "and then reply TERMINATE outside the code block.",
+                                                 "and then reply TERMINATE outside the code block. "
+                                                 "Always reply TERMINATE at the end only.",
                                }
          }
     ]
@@ -173,7 +175,8 @@ def get_verilog_waveform_debug_agent_config(config_list: Dict[str, Any],opensour
                                    "TERMINATE"),
                                'max_consecutive_auto_reply': 40,
                                'system_message': "You are a Verilog RTL designer that only writes verilog top_module using correct "
-                                                 "Verilog syntax based on the plan. Use the provided tools to solve the task. Reply TERMINATE when the Function Check Success.",
+                                                 "Verilog syntax based on the plan. Use the provided tools to solve the task. Reply TERMINATE when the Function Check Success. "
+                                                 "Always reply TERMINATE at the end only.",
                                # 'llm_config': {"config_list": config_list, "cache_seed": None, "temperature": 0.1, "top_p": 1},
                                'llm_config': {
                                    "temperature": 0.2,
@@ -236,7 +239,8 @@ def get_verilog_debug_agent_config(config_list: Dict[str, Any], opensource_model
                                    "TERMINATE"),
                                'max_consecutive_auto_reply': 40,
                                'system_message': "You are a Verilog RTL designer that only writes verilog top_module using correct "
-                                                 "Verilog syntax based on the plan. Use the provided tools to solve the task. Reply TERMINATE when the Function Check Success.",
+                                                 "Verilog syntax based on the plan. Use the provided tools to solve the task. Reply TERMINATE when the Function Check Success. "
+                                                 "Always reply TERMINATE at the end only.",
                                # 'llm_config': {"config_list": config_list, "cache_seed": None, "temperature": 0.1, "top_p": 1},
                                'llm_config': {
                                    "temperature": 0.2,
